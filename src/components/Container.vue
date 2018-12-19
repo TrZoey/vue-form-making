@@ -222,6 +222,13 @@ export default {
         this.$refs.widgetPreview.end()
       })
     },
+    setJSON: function setJSON(json) {
+        this.widgetForm = json;
+
+        if (json.list.length > 0) {
+            this.widgetFormSelect = json.list[0];
+        }
+    },
     handleGenerateJson () {
       this.jsonVisible = true
       this.jsonTemplate = this.widgetForm
