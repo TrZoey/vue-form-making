@@ -56,9 +56,10 @@
     <el-container class="center-container" direction="vertical">
       <el-header class="btn-bar" style="height: 45px;">
         <!-- <el-button type="text" size="medium" @click="handleGoGithub">GitHub</el-button> -->
-        <el-button type="text" size="medium" icon="el-icon-view" @click="handlePreview">预览</el-button>
-        <el-button type="text" size="medium" icon="el-icon-tickets" @click="handleGenerateJson">生成JSON</el-button>
-        <el-button type="text" size="medium" icon="el-icon-document" @click="handleGenerateCode">生成代码</el-button>
+        <el-button v-if="preview" type="text" size="medium" icon="el-icon-view" @click="handlePreview">预览</el-button>
+        <el-button v-if="json" type="text" size="medium" icon="el-icon-tickets" @click="handleGenerateJson">生成JSON</el-button>
+        <el-button v-if="code" type="text" size="medium" icon="el-icon-document" @click="handleGenerateCode">生成代码</el-button>
+        <slot name="action"></slot>
       </el-header>
       <el-main :class="{'widget-empty': widgetForm.list.length == 0}">
         
@@ -149,6 +150,7 @@ export default {
     CusDialog,
     GenerateForm
   },
+  props: ['preview', 'json', 'code'],
   data () {
     return {
       basicComponents,
@@ -158,7 +160,8 @@ export default {
         list: [],
         config: {
           labelWidth: 100,
-          labelPosition: 'top'
+          labelPosition: 'top',
+          labelSize: 'mini'
         },
       },
       configTab: 'widget',
@@ -222,12 +225,15 @@ export default {
         this.$refs.widgetPreview.end()
       })
     },
-    setJSON: function setJSON(json) {
+    setJSON (json) {
         this.widgetForm = json;
 
         if (json.list.length > 0) {
             this.widgetFormSelect = json.list[0];
         }
+    },
+    getJSON() {
+        return this.widgetForm;
     },
     handleGenerateJson () {
       this.jsonVisible = true

@@ -1,5 +1,5 @@
 <template>
-  <fm-making-form></fm-making-form>
+  <fm-making-form :preview="true" :json="true"></fm-making-form>
 </template>
 
 <script>

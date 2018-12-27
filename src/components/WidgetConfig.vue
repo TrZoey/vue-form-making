@@ -65,6 +65,9 @@
             <el-input size="mini" style="" v-model="data.options.remoteFunc">
               <template slot="prepend">远端方法</template>
             </el-input>
+            <el-input size="mini" style="" v-model="data.options.param">
+              <template slot="prepend">参数</template>
+            </el-input>
             <el-input size="mini" style="" v-model="data.options.props.value">
               <template slot="prepend">值</template>
             </el-input>
@@ -265,8 +268,10 @@
           <el-input v-model="data.model"></el-input>
         </el-form-item>
         <el-form-item label="操作属性">
-          <el-checkbox v-model="data.options.readonly" v-if="Object.keys(data.options).indexOf('readonly')>=0">完全只读</el-checkbox>
+          <!--<el-checkbox v-model="data.options.readonly" v-if="Object.keys(data.options).indexOf('readonly')>=0">完全只读</el-checkbox>-->
           <el-checkbox v-model="data.options.disabled" v-if="Object.keys(data.options).indexOf('disabled')>=0">禁用	</el-checkbox>
+          <el-checkbox v-model="data.options.readonly">完全只读</el-checkbox>
+          <!--<el-checkbox v-model="data.options.disabled">禁用	</el-checkbox>-->
           <el-checkbox v-model="data.options.editable" v-if="Object.keys(data.options).indexOf('editable')>=0">文本框可输入</el-checkbox>
           <el-checkbox v-model="data.options.clearable" v-if="Object.keys(data.options).indexOf('clearable')>=0">显示清除按钮</el-checkbox>
           <el-checkbox v-model="data.options.arrowControl" v-if="Object.keys(data.options).indexOf('arrowControl')>=0">使用箭头进行时间选择</el-checkbox>

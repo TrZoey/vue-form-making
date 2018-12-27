@@ -1,6 +1,6 @@
 <template>
   <div class="widget-form-container">
-    <el-form :label-position="data.config.labelPosition" :label-width="data.config.labelWidth + 'px'">
+    <el-form :label-position="data.config.labelPosition" :label-width="data.config.labelWidth + 'px'" :size="data.config.labelSize">
       
       <draggable class="widget-form-list" 
         
