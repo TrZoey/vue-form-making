@@ -14,6 +14,7 @@
           <li class="form-edit-widget-label" v-for="(item, index) in basicComponents" :key="index">
             <a>
               <icon class="icon" :name="item.icon"></icon>
+              <!--<i class="icon iconfont icon-time"></i>-->
               <span>{{item.name}}</span>
             </a>
           </li>
